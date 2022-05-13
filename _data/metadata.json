@@ -1,9 +1,9 @@
 {
-  "title": "Title of the website. Update me.",
-  "url": "https://update-me.com",
+  "title": "R-Proxy RAT",
+  "url": "https://cybersec-project-1.netlify.app/",
   "domain": "update-me.com",
-  "description": "Description of the website. Update me.",
-  "genre": "Insert a schema.org genre",
+  "description": "Blog describing an attack scenario for cybersecurity study.",
+  "genre": "Blog",
   "googleAnalyticsId": "GA ID. Update me. Note, that this is not compatible with the not-yet-commonly used version 4 of Google Analytics",
   "sendWebVitals": false,
   "feed": {
@@ -17,7 +17,7 @@
     "url": "https://update-me.com/feed/feed.json"
   },
   "author": {
-    "name": "Author Name. Update me.",
+    "name": "Wojciech Belka",
     "twitterHandle": "update_me"
   },
   "publisher": {
