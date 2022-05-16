@@ -5,6 +5,7 @@ date: 2018-07-04
 scheduled: 2018-07-04
 tags:
   - number-2
+  - posts
 layout: layouts/post.njk
 ---
 

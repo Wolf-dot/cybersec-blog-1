@@ -25,6 +25,20 @@ templateClass: tmpl-post
   <a href="https://twitter.com/{{ metadata.author.twitterHandle }}" target="_blank" rel="noopener">ping me on Twitter.</a>
 </p>
 
+<div class = "controls">
+  {% if prevPost.url %}
+    <p>
+      <strong>Previous step</strong>
+      <a class = "previous" href="{{ prevPost.url }}">{{prevPost.data.title}}</a>
+    </p>
+  {% endif %}
+  {% if nextPost.url %}
+    <p>
+      <strong>Next step</strong>
+      <a class = "next" href="{{ nextPost.url }}">{{nextPost.data.title}}</a>
+  {% endif %}
+</div>
+
 <share-widget>
   <button on-click="share" aria-label="Share" href="{{ shareUrl | safe }}">
     <div></div>

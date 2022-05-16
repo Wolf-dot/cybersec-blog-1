@@ -171,10 +171,27 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  /*
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByTag("posts");
   });
+  */
+
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
+  
+  //get all posts tagged as "posts" and give each a previous and next post in line
+  eleventyConfig.addCollection("posts", function(collection) {
+    const coll = collection.getFilteredByTag("posts");
+    for (let i=0; i < coll.length; i++){
+      const prevPost = coll[i - 1];
+      const nextPost = coll[i + 1];
+
+      coll[i].data["prevPost"] = prevPost;
+      coll[i].data["nextPost"] = nextPost;
+    }
+    return coll;
+  });
+
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
   // We need to copy cached.js only if GA is used

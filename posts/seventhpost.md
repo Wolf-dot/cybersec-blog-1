@@ -4,7 +4,9 @@ description: Draft
 date: 2021-06-28
 scheduled: 2021-06-28
 layout: layouts/post.njk
-tags: second-tag
+tags:
+    - second-tag
+    - posts
 ---
 
 Docker is an open-source project for automating the deployment of applications as portable, self-sufficient containers that can run on the cloud or on-premises.
