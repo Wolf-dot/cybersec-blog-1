@@ -19,12 +19,12 @@ We can create containers based on their images. You'll find a great collection o
 For this project we'll be using a very lightweight linux distro [Alpine](https://hub.docker.com/_/alpine) for our Victim, [NGINX](https://hub.docker.com/_/nginx) for our Reverse-Proxy and [Kali linux](https://hub.docker.com/r/kalilinux/kali-rolling) for our attacker.
 
 
-```
+``` bash
 docker pull alpine
 docker pull nginx:alpine
 docker pull kalilinux/kali-rolling
 ```
-![prtsc of a console](https://cdn.glitch.global/b39fd45a-08ef-47bc-a9ef-6aa62020936c/wolfff%40wolfberry_%20~%2010_05_2022%2015_35_01.png?v=1652189714734)
+![prtsc of a console](/img/remote/pull-images.png)
 
 Check your images with:
 ```
@@ -33,7 +33,7 @@ docker images
 
 Then we'll build our images. While we build we can name them for easier handling.
 
-```
+``` shell
 docker run --name victim alpine
 docker run --name reverse-proxy nginx
 docker run --name attacker klilinux/kalirolling 
