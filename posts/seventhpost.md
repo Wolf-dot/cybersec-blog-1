@@ -27,7 +27,8 @@ docker pull kalilinux/kali-rolling
 ![prtsc of a console](/img/remote/pull-images.png)
 
 Check your images with:
-```
+
+```bash
 docker images
 ```
 

@@ -1,24 +1,43 @@
 ---
 title: This is my fourth post.
-description: This is a post on My Blog about touchpoints and circling wagons.
-date: 2018-09-30
-scheduled: 2018-09-30
-tags: 
+description: Draft
+date: 2021-06-31
+scheduled: 2021-06-31
+layout: layouts/post.njk
+tags:
     - second-tag
     - posts
-layout: layouts/post.njk
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+This is optional since this is just three containers talking, but we could use https instead of http.
+SSL is very important as simple http provides no encryption, that's why we had to use `-k` flag to ignore the warnigns.
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+To use SSL we need a certificate which is used during a handshake and confirms our identity.
+You can go to websites which provide paid or free certificates, but we're going to use a self signed certificate.
+A self-signed certificate still would show a warning on your browser, but we'd graduate to https.
 
-![An image](https://cdn.pixabay.com/photo/2020/08/25/11/11/zebra-5516455_1280.jpg)
+I'll use openssl to generate self-signed certificates for both the attacker and reverse-proxy.
+reverse-proxy: 
 
-## Section Header
+``` bash
+apk add openssl
+```
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+attacker: 
 
-## A sample GIF
+``` bash 
+apt install openssl
+```
 
-![A sample GIF](https://thumbs.gfycat.com/EqualCreativeCowbird-max-1mb.gif)
+In reverse-proxy go to `/etc/ssl/` and create a directory named 'private': 
+
+``` bash
+mkdir private
+```
+
+This directory should be already present in attacker.
+Now generate the public and private key's with the following command:
+
+``` bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+```

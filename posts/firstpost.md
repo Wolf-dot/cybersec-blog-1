@@ -1,32 +1,45 @@
 ---
-title: This is my first post.
-description: This is a post on My Blog about agile frameworks.
-date: 2018-05-01
-scheduled: 2018-05-01
-tags:
-  - another-tag
-  - posts
+title: The first step.
+description: Draft
+date: 2021-06-28
+scheduled: 2021-06-28
 layout: layouts/post.njk
-image: https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg
+tags:
+    - second-tag
+    - posts
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+Docker is an open-source project for automating the deployment of applications as portable, self-sufficient containers that can run on the cloud or on-premises.
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
 
-![An image](https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg)
+Go ahead and download [Docker](https://docker.com). You'll have to create a free account for that, it takes barely a couple of seconds.
 
-## Section Header
+We can create containers based on their images. You'll find a great collection on them on [DockerHub](https://hub.docker.com/).
+For this project we'll be using a very lightweight linux distro [Alpine](https://hub.docker.com/_/alpine) for our Victim, [NGINX](https://hub.docker.com/_/nginx) for our Reverse-Proxy and [Kali linux](https://hub.docker.com/r/kalilinux/kali-rolling) for our attacker.
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
 
-``` text/2-3
-// this is a command
-function myCommand() {
-	let counter = 0;
-	counter++;
-}
-
-// Test with a line break above this line.
-console.log('Test');
+``` bash
+docker pull alpine
+docker pull nginx:alpine
+docker pull kalilinux/kali-rolling
 ```
+![prtsc of a console](/img/remote/pull-images.png)
+
+Check your images with:
+
+```bash
+docker images
+```
+
+Then we'll build our images. While we build we can name them for easier handling.
+
+``` shell
+docker run --name victim alpine
+docker run --name reverse-proxy nginx
+docker run --name attacker klilinux/kalirolling 
+```
+You can check the containers that we've created with ```docker ps -a```.
+![prtsc of a console](https://cdn.glitch.global/b39fd45a-08ef-47bc-a9ef-6aa62020936c/wolfff%40wolfberry_%20~%2010_05_2022%2015_31_45.png?v=1652189621877)
+
+Next, we'll start our servers.

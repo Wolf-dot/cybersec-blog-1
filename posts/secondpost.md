@@ -1,33 +1,105 @@
 ---
-title: This is my second post.
-description: This is a post on My Blog about leveraging agile frameworks.
-date: 2018-07-04
-scheduled: 2018-07-04
-tags:
-  - number-2
-  - posts
+title: The second step.
+description: Draft
+date: 2021-06-29
+scheduled: 2021-06-29
 layout: layouts/post.njk
+tags:
+    - second-tag
+    - posts
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+Now we're going to configure the basic reverse-proxy website.
+Let's see how it looks now, run:
 
-## Section Header
+``` bash
+curl localhost
+```
+![console prtsc](/img/remote/curl-localhost-proxy.png)
 
-<a href="{{ '/posts/firstpost/' | url }}">First post</a>
-<a href="{{ '/posts/thirdpost/' | url }}">Third post</a>
+We're getting a default nginx website.
+Let's now navigate to `/etc/nginx/conf.d/`
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+`ls` will list items in the current directory.
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+`cd etc` will change directory to etc. 
 
-# Test SVG
+Use `cd ..` to go up (back) in directories.
 
-![Test Share SVG](/img/share.svg)
+Inside you'll find `default.conf` file. Let's edit it with nano.
 
-# Test Relative Local Image
+``` bash
+nano default.conf
+```
+That's the default configuration. We won't be making a lot of changes.
+For now lets copy the contents. To copy you can highlight the contents and right-click.
 
-![Test Share SVG](../../img/doener.jpg)
+### Attacker
+Now, navigate to the same directory in the attacker container,
+then, create a file in `conf.d` useing the following command
 
-# Test PNG
+``` bash
+touch default.conf
+```
+and the right click to paste.
+Now we'll change the port at which we'll listen for connections.
+To exit nano you use `ctrl+x`, then type 'y' to confirm and enter.
+Now that we have the default configuration let's modify the index.html a little to make it clear if we get the attacker's website.
+Navigate to `/usr/share/nginx/html`.
+Open index.html and let's make it really simple:
 
-![Png By @clipartmax.com](https://www.clipartmax.com/png/full/0-9896_film-clipart-free-to-use-public-domain-movie-clip-art-directors-board.png)
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Merlin!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to MERLIN!</h1>
+</body>
+</html>
+```
+
+Let's also go to `/etc/nginx/sites-enabled` and delete the `default` file since we're using `default.conf` file that we created earlier.
+
+``` bash
+rm default
+```
+Now let's reload nginx and see if it works.
+
+``` bash
+nginx -s reload
+curl localhost
+```
+
+![console prtsc](/img/remote/curl-localhost-attacker.png)
+
+**It works!**
+But if it didn't for you, try the following:
+
+``` bash
+service nginx restart
+nginx -s reload -t
+```
+
+Now let's see if we can see this page from the Victim's container.
+First, check Attacker's ip with:
+
+``` bash
+ip addr
+```
+For me it's `172.17.0.3`
+Then in Victim's terminal type in:
+
+``` bash
+curl http://172.17.0.3/
+```
+
+**And it works again!**

@@ -1,30 +1,45 @@
 ---
-title: This is my third post.
-description: This is a post on My Blog about win-win survival strategies.
-date: 2018-08-24
-scheduled: 2018-08-24
-tags:
-  - second-tag
-  - posts
+title: The thrid step.
+description: Draft
+date: 2021-06-30
+scheduled: 2021-06-30
 layout: layouts/post.njk
+tags:
+    - second-tag
+    - posts
 ---
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 
-``` js/2/4
-// this is a command
-function myCommand() {
-	let counter = 0;
+You can make a fake website, create a download link, whatever. The attack possibilites are almost endless.
+But your attacking server is left open! If you were blocked you'd have to spin up and configure a whole new server.
+But there is a way!
 
-	counter++;
+A reverse proxy is a server that sits in front of web servers and forwards client (e.g. web browser) requests to those web servers.
+Which means that the attacker will be hidden behind the proxy, and if the site is blacklisted - it's no problem for a reverse-proxy.
 
-}
+So, let's go into Reverse-Proxy and navigate to `/etc/nginx/conf.d` and open default.conf.
+Let's add a new location:
 
-// Test with a line break above this line.
-console.log('Test');
+``` bash
+    location /merlin {
+        proxy_pass http://172.17.0.3/;
+        }
+```
+![console prtsc](/img/remote/edit-reverse-proxy-server.png)
+Reload nginx: `nginx -s reload`.
+
+Now let's go to Victim and see what we get.
+Let's curl the reverse-proxy address (using `-k` to ignore insecure connection).
+
+``` bash
+curl -k http://172.17.0.2/
 ```
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+and we're getting reverse-proxy's nginx page.
+Now let's curl the same address but with `/merlin` at the end.
 
-## Section Header
+``` bash
+curl -k http://172.17.0.2/merlin
+```
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+and now we're getting the attacker's website!
+![console prtsc](/img/remote/curl-reverseproxy-merlin.png)
