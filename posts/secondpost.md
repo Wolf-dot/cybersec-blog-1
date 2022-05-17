@@ -5,7 +5,6 @@ date: 2021-06-29
 scheduled: 2021-06-29
 layout: layouts/post.njk
 tags:
-    - second-tag
     - posts
 ---
 
