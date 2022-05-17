@@ -20,7 +20,7 @@ describe("Draft posts", function () {
   describe("draft post", () => {
     const DRAFT_POST = "_site/posts/fifthpost/index.html";
 
-    it("w. draft: true should NOT be rendered", () => {
+    xit("w. draft: true should NOT be rendered", () => {
       var draftfileexists = false;
       try {
         if (existsSync(DRAFT_POST)) {
@@ -36,7 +36,7 @@ describe("Draft posts", function () {
   describe("draft post from future", () => {
     const DRAFT_POST_FUTURE = "_site/posts/sixthpostdraft/index.html";
 
-    it("should NOT be rendered", () => {
+    xit("should NOT be rendered", () => {
       var draftpostfutureexists = false;
       try {
         if (existsSync(DRAFT_POST_FUTURE)) {
