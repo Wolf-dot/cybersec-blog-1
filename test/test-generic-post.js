@@ -138,7 +138,7 @@ describe("check build output for a generic post", () => {
     });
 
     describe("body", () => {
-      it("should have images", () => {
+      xit("should have images", () => {
         const images = Array.from(
           doc.querySelectorAll("article :not(aside) picture img")
         );
