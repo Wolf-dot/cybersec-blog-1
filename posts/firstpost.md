@@ -12,9 +12,9 @@ Docker is an open-source project for automating the deployment of applications a
 
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
 
-Go ahead and download [Docker](https://docker.com). You'll have to create a free account for that, it takes barely a couple of seconds.
+Go ahead and download [Docker](https://docker.com). You'll have to create a free account for that, but it takes barely a couple of seconds.
 
-We can create containers based on their images. You'll find a great collection on them on [DockerHub](https://hub.docker.com/).
+We can create containers based on their images. You'll find a great collection of them on [DockerHub](https://hub.docker.com/).
 For this project we'll be using a very lightweight linux distro [Alpine](https://hub.docker.com/_/alpine) for our Victim, [NGINX](https://hub.docker.com/_/nginx) for our Reverse-Proxy and [Kali linux](https://hub.docker.com/r/kalilinux/kali-rolling) for our attacker.
 
 
