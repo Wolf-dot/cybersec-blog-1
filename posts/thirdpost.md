@@ -27,13 +27,13 @@ Let's add a new location:
 Reload nginx: `nginx -s reload`.
 
 Now let's go to Victim and see what we get.
-Let's curl the reverse-proxy address (using `-k` to ignore insecure connection).
+Let's curl the reverse-proxy address (using `-k` flag to ignore insecure connection).
 
 ``` bash
 curl -k http://172.17.0.2/
 ```
 
-and we're getting reverse-proxy's nginx page.
+We're getting reverse-proxy's nginx page.
 Now let's curl the same address but with `/merlin` at the end.
 
 ``` bash

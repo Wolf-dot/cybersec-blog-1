@@ -15,11 +15,10 @@ A container is a standard unit of software that packages up code and all its dep
 Go ahead and download [Docker](https://docker.com). You'll have to create a free account for that, but it takes barely a couple of seconds.
 
 We can create containers based on their images. You'll find a great collection of them on [DockerHub](https://hub.docker.com/).
-For this project we'll be using a very lightweight linux distro [Alpine](https://hub.docker.com/_/alpine) for our Victim, [NGINX](https://hub.docker.com/_/nginx) for our Reverse-Proxy and [Kali linux](https://hub.docker.com/r/kalilinux/kali-rolling) for our attacker.
+For this project we'll be using [Kali linux](https://hub.docker.com/r/kalilinux/kali-rolling) for our *Attacker* and *Victim* and [NGINX](https://hub.docker.com/_/nginx) for our *Reverse-Proxy*.
 
 
 ``` bash
-docker pull alpine
 docker pull nginx:alpine
 docker pull kalilinux/kali-rolling
 ```
@@ -34,7 +33,7 @@ docker images
 Then we'll build our images. While we build we can name them for easier handling.
 
 ``` shell
-docker run --name victim alpine
+docker run --name victim klilinux/kalirolling 
 docker run --name reverse-proxy nginx
 docker run --name attacker klilinux/kalirolling 
 ```
