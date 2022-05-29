@@ -31,6 +31,8 @@ Now generate the public and private key's with the following command:
 ``` bash
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 ```
+
+Fill the requested fields however you want.
 This has generated a certificate confirming your identity as well as a public and private key-pair needed for encrypted communication.
 Next let's change our configuration to use HTTPS instead of HTTP.
 

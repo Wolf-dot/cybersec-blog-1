@@ -94,4 +94,3 @@ Close the agent with a CTRL + C and enter the following:
 ```
 
 This time we're using the IP of our reverse-proxy, and it still connects!
-We'll be using those two scenarios, with and without the reverse-proxy, in the next post.

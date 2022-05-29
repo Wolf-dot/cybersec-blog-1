@@ -21,6 +21,7 @@ For this project we'll be using [Kali linux](https://hub.docker.com/r/kalilinux/
 docker pull nginx:alpine
 docker pull kalilinux/kali-rolling
 ```
+
 ![prtsc of a console](/img/remote/pull-images.png)
 
 Check your images with:
@@ -36,6 +37,7 @@ docker run --name victim klilinux/kalirolling
 docker run --name reverse-proxy nginx
 docker run --name attacker klilinux/kalirolling 
 ```
+
 You can check the containers that we've created with `docker ps -a`.
 ![prtsc of a console](https://cdn.glitch.global/b39fd45a-08ef-47bc-a9ef-6aa62020936c/wolfff%40wolfberry_%20~%2010_05_2022%2015_31_45.png?v=1652189621877)
 
@@ -62,7 +64,6 @@ For attacker and reverse-proxy:
 apt install nano
 ```
 
-
 Docker has a default network called bridge which it will automatically create between your containers unless specified otherwise. That means that we can easily communicate between our containers!
 >The IP address that each container gets will change with each reload, so remember to check and adjust if you're making this project over several days.
 Let's check our IP addresses using `ip addr`.
@@ -76,3 +77,5 @@ You can stop the ping with CTR + C.
 ![revrse-proxy ping](/img/remote/reverse-proxy-ping.png)
 
 Next we'll start our servers!
+
+>If you exit your container and want to get back into it use the command `docker exec -it victim /bin/bash`. If you stopped it you have to start it up again with `docker start victim`.
