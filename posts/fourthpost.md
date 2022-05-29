@@ -1,8 +1,8 @@
 ---
 title: Adding SSL encryption.
 description: Draft
-date: 2021-06-31
-scheduled: 2021-06-31
+date: 2021-07-01
+scheduled: 2021-07-01
 layout: layouts/post.njk
 tags:
     - posts
@@ -36,7 +36,7 @@ Next let's change our configuration to use HTTPS instead of HTTP.
 
 In our reverse proxy let's configure '/etc/nginx/conf.d/default.conf'. We'll make it use port 443 for HTTPS, link our certificate and key and redirect any HTTP traffic to HTTPS.
 
-``` bash
+``` js
 server {
     listen       80 default_server;
     listen  [::]:80 default_server;

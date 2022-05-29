@@ -1,8 +1,8 @@
 ---
 title: Time for RAT.
 description: Draft
-date: 2021-06-32
-scheduled: 2021-06-32
+date: 2021-07-02
+scheduled: 2021-07-02
 layout: layouts/post.njk
 tags:
     - posts

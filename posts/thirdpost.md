@@ -1,5 +1,5 @@
 ---
-title: Creating reverse-proxy.
+title: Creating a reverse-proxy.
 description: Draft
 date: 2021-06-30
 scheduled: 2021-06-30
@@ -18,7 +18,7 @@ Which means that the attacker will be hidden behind the proxy, and if the site i
 So, let's go into Reverse-Proxy and navigate to `/etc/nginx/conf.d` and open default.conf.
 Let's add a new location which will pass the requests to the IP address of our Attacker.
 
-``` bash
+``` js
     location /merlin {
         proxy_pass http://172.17.0.3/;
         }
