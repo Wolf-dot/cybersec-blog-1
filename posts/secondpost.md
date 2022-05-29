@@ -20,9 +20,7 @@ We're getting a default nginx website.
 Let's now navigate to `/etc/nginx/conf.d/`
 
 `ls` will list items in the current directory.
-
 `cd etc` will change directory to etc. 
-
 Use `cd ..` to go up (back) in directories.
 
 Inside you'll find `default.conf` file. Let's edit it with nano.
@@ -30,20 +28,20 @@ Inside you'll find `default.conf` file. Let's edit it with nano.
 ``` bash
 nano default.conf
 ```
+
 That's the default configuration. We won't be making a lot of changes.
 For now lets copy the contents. To copy you can highlight the contents and right-click.
 
 ### Attacker
-Now, navigate to the same directory in the attacker container,
-then, create a file in `conf.d` useing the following command
+Navigate to the same directory in the attacker container, then create a file in `conf.d` useing the following command:
 
 ``` bash
 touch default.conf
 ```
-and the right click to paste.
+Right click to paste what we copied earlier.
 Now we'll change the port at which we'll listen for connections.
 To exit nano you use `ctrl+x`, then type 'y' to confirm and enter.
-Now that we have the default configuration let's modify the index.html a little to make it clear if we get the attacker's website.
+Now that we have the default configuration let's modify the `index.html` a little to make it clear if we get the attacker's website.
 Navigate to `/usr/share/nginx/html`.
 Open index.html and let's make it really simple:
 

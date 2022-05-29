@@ -8,22 +8,18 @@ tags:
     - posts
 ---
 
-We have our Attacker server ready,
-we have our Reverse-Proxy ready,
-and we have encrypted HTTPS communication.
-
+We have our Attacker server ready, we have our Reverse-Proxy ready, and we have encrypted HTTPS communication.
 ### It's time for our RAT.
-A RAT is a Remote Access Tool. They can be used in a number of positive ways like Windows Remote Control or SSH sessions.
-Our RAT is going to be malicious though. We're going to control our Victim's system from our Attacker and by using a Reverse-Proxy
-and SSL we'll be masked and hidden, impossible to trace. Well, not really. But it won't be easy!
+A RAT is a Remote Access Tool. They can be used in a number of positive ways like Windows Remote Control or SSH sessions. Our RAT is going to be malicious though. We're going to control our Victim's system from our Attacker and by using a Reverse-Proxy and SSL we'll be masked and hidden, impossible to trace. Well, not really. But it won't be easy! (We'll try that later.)
 
 First let's get our tools.
-Download wget and 7zip:
+Download wget and 7zip onto our Attacker:
 
 ``` bash 
 apt install wget
 apt-get install p7zip-full
 ```
+
 Next let's get ![Merlin](https://github.com/Ne0nd0g/merlin).
 Merlin is a cross-platform post-exploitation Command & Control server and agent written in Go.
 We'll create a directory for it and unpack it using 7zip, as per instructions on the ![official site](https://merlin-c2.readthedocs.io/en/latest/quickStart/server.html).

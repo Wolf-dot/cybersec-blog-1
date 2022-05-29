@@ -8,14 +8,13 @@ tags:
     - posts
 ---
 
-SSL is very important as simple HTTP provides no encryption and we'd be leaving our traffic for anyone to read.
+Simple HTTP provides no encryption, leaving our traffic for anyone to read.
+To use SSL, the encryption protocol in HTTPS, we need a certificate which is used during a handshake and confirms our identity as well as a private and public key. During a handshake the identites of connecting parties are confirmed and they use their public and private keys to encrypt and decrypt their conversation. That means that if someone intercepts our traffic they won't be able to read it or tamper with it, since the encrypted messages are signed with our certificates.
+You can go to websites which provide paid or free certificates, but we're going to use a self signed certificate. A self-signed certificate will still show a warning on your browser, but we'd graduate to HTTPS.
 
-To use SSL we need a certificate which is used during a handshake and confirms our identity.
-You can go to websites which provide paid or free certificates, but we're going to use a self signed certificate.
-A self-signed certificate still would show a warning on your browser, but we'd graduate to https.
+I'll use openssl to generate self-signed certificates only for the reverse-proxy because it'll be facing the "outside world". Our attacker stays hidden behind it and will only get traffic from reverse-proxy.
 
-I'll use openssl to generate self-signed certificates for the reverse-proxy because it'll be facing the "outside world", our attacker stays hidden.
-reverse-proxy: 
+Reverse-proxy: 
 
 ``` bash
 apk add openssl
@@ -33,11 +32,9 @@ Now generate the public and private key's with the following command:
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 ```
 This has generated a certificate confirming your identity as well as a public and private key-pair needed for encrypted communication.
-They are exchanged during a handshake and used to encrypt and decrypt incoming and outgoing traffic.
-
 Next let's change our configuration to use HTTPS instead of HTTP.
 
-For our reverse proxy let's configure '/etc/nginx/conf.d/default.conf'. We'll make it use port 443 for HTTPS, link our certificate and key and redirect any HTTP traffic to HTTPS.
+In our reverse proxy let's configure '/etc/nginx/conf.d/default.conf'. We'll make it use port 443 for HTTPS, link our certificate and key and redirect any HTTP traffic to HTTPS.
 
 ``` bash
 server {
@@ -88,6 +85,7 @@ Let's see if we can reach the Attacker through `/merlin`.
 ``` bash
 curl -k https://172.17.0.2/merlin
 ```
+
 Great!
 ![console prtsc](/img/remote/curl-https-merlin.png)
 And if we try HTTP:
@@ -101,4 +99,4 @@ We'll be redirected to the HTTPS version of the site:
 ![consonle prtsc](/img/remote/curl-http-merlin.png)
 
 >You might've noticed different IP addresses. That's because they can change with every container start-up. There are ways to make them permanent or use the container's name, but I couldn't be bothered.
->Remember to check with `ip addr` and change IP adresses where needed if you're doing this project over multiple days.
+>Remember to check with `ip addr` and adjust IP adresses where needed if you're doing this project over multiple days.
