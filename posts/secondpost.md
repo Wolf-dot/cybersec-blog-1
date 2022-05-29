@@ -1,5 +1,5 @@
 ---
-title: The second step.
+title: Configuring servers.
 description: Draft
 date: 2021-06-29
 scheduled: 2021-06-29
