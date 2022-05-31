@@ -181,7 +181,7 @@ module.exports = function (eleventyConfig) {
   
   //get all posts tagged as "posts" and give each a previous and next post in line
   eleventyConfig.addCollection("posts", function(collection) {
-    const coll = collection.getFilteredByTag("posts").sort((a,b) => b.data.order - a.data.order);
+    const coll = collection.getFilteredByTag("posts").sort((a,b) => a.data.order - b.data.order);
     for (let i=0; i < coll.length; i++){
       const prevPost = coll[i - 1];
       const nextPost = coll[i + 1];
