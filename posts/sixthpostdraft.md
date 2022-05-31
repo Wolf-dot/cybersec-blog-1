@@ -32,6 +32,7 @@ tcpdump -s 65535 -i any -v -w my_capture.pcap
 - s: Older versions of Tcpdump cut-off packets to 68 or 96 bytes. The ‘-s’ option is used for capturing packets with full length.
 - i: Selects the interface to listen on.
 - w: Saves the raw packets captured to a file instead of displaying them on the terminal. 
+- v: Verbose output. The more v's you use the more information will be shown in the terminal.
 
 In the other Victim terminal let's ping the reverse-proxy and visit main reverse-proxy page:
 
@@ -52,9 +53,7 @@ When you install it, open the my_capture.pcap file.
 ![capture](/img/remote/my-capture.png)
 
 You can see so many cool things!
-
 Ping sends a request and then receives a reply!
 You can see the handshake happen when we curled the reverse-proxy server, and the key exchange!
-We can inspect the encrypted packets!
-
+We can even inspect the encrypted packets!
 Truly WireShark is a marvel.

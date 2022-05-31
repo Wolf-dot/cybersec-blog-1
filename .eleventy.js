@@ -181,7 +181,7 @@ module.exports = function (eleventyConfig) {
   
   //get all posts tagged as "posts" and give each a previous and next post in line
   eleventyConfig.addCollection("posts", function(collection) {
-    const coll = collection.getFilteredByTag("posts");
+    const coll = collection.getFilteredByTag("posts").sort((a,b) => b.data.order - a.data.order);
     for (let i=0; i < coll.length; i++){
       const prevPost = coll[i - 1];
       const nextPost = coll[i + 1];
@@ -193,7 +193,15 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("postsOrder", function(collection) {
-    return collection.getFilteredByTag("posts").sort((a,b) => b.data.order - a.data.order);
+    const coll = collection.getFilteredByTag("posts").sort((a,b) => b.data.order - a.data.order);
+    for (let i=0; i < coll.length; i++){
+      const prevPost = coll[i - 1];
+      const nextPost = coll[i + 1];
+
+      coll[i].data["prevPost"] = prevPost;
+      coll[i].data["nextPost"] = nextPost;
+    }
+    return coll;
   });
 
   eleventyConfig.addPassthroughCopy("img");
