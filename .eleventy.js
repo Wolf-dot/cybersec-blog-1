@@ -192,6 +192,10 @@ module.exports = function (eleventyConfig) {
     return coll;
   });
 
+  eleventyConfig.addCollection("postsOrder", function(collection) {
+    return collection.getFilteredByTag("posts").sort((a,b) => b.data.order - a.data.order);
+  });
+
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
   // We need to copy cached.js only if GA is used
