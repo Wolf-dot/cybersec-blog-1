@@ -1,7 +1,7 @@
 <ul>
 {% for post in collections.postsOrder | reverse %}
   <li>
-    <span>step #{{post.order}} <a href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></span>
+    <span>step #{{post.data.order}} <a href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></span>
   </li>
 {% endfor %}
 </ul>
