@@ -4,9 +4,8 @@ description: Draft
 date: 2021-07-03
 scheduled: 2021-07-03
 layout: layouts/post.njk
-order: 0
-tags:
-    - posts
+order: 7
+tags: posts
 ---
 
 Let's see how a Remote Access Tool like Merlin communicates! We'll capture and read packets in two scenarios:
