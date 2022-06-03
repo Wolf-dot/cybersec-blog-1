@@ -1,9 +1,9 @@
 ---
-title: Scenario number 2.
+title: Ideas
 description: Draft
 layout: layouts/post.njk
 order: 8
-tags: posts
+tags: 
 ---
 
 For our second scenario let's use HTTPS to connect Victim directly to the Attacker.

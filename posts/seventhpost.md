@@ -1,5 +1,5 @@
 ---
-title: Scenario number 1.
+title: Running a scenario.
 description: Draft
 date: 2021-07-03
 scheduled: 2021-07-03
