@@ -48,8 +48,8 @@ docker ps
 Now we'll copy the agent from our attacker to our desktop and then from our desktop to our victim.
 
 ``` bash
-docker cp 75566028d8fb:/opt/merlin/data/bin/linux/merlinAgent-Linux-x64 ~/Desktop/merlinAgent-Linux-x64
-docker cp ~/Desktop/merlinAgent-Linux-x64 b9d55696b755:/merlinAgent-Linux-x64
+docker cp 75566028d8fb:/opt/merlin/data/bin/linux/merlinAgent-Linux-x64 C:\Users\User\Desktop/merlinAgent-Linux-x64
+docker cp C:\Users\User\Desktop/merlinAgent-Linux-x64 b9d55696b755:/merlinAgent-Linux-x64
 ```
 
 Now, we're ready! Let's just check out how Merlin server and Agent work together.
@@ -95,3 +95,16 @@ Close the agent with a CTRL + C and enter the following:
 ```
 
 This time we're using the IP of our reverse-proxy, and it still connects!
+
+Let's try out a couple of commands. In our Attacker, in Merlin, type in `interact` and let TAB completion add the agent ID. Now if you hit TAB you can see how many options we have to interact with our Victim! You can read more about each one by typing `help`.
+I'll create a `hello.txt` file and upload it to our Victim so I can say hi!
+
+``` bash
+!touch hello.txt
+upload hello.txt hello.txt
+```
+We should see the job created and after a moment the job completed. Let's take a look with `ls`.
+
+![list Victim files](/img/remote/list-victim.png)
+
+And there we have it. For now close the Agent with `CTRL + C` and inside Merlin navigate `back` then type `remove` and let the TAB completion fill out agent ID.

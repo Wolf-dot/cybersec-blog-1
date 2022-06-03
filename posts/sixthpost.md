@@ -9,7 +9,7 @@ tags:
     - posts
 ---
 
-It's time to capture our traffic with a tool called ![tcpdump](https://www.tcpdump.org/) so we can analyze it later with ![WireShark](https://www.wireshark.org/).
+It's time learn to capture our traffic with a tool called ![tcpdump](https://www.tcpdump.org/) so we can analyze it later with ![WireShark](https://www.wireshark.org/).
 
 Let's get tcpdump on our victim.
 
