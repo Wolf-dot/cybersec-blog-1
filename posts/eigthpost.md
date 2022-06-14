@@ -13,6 +13,4 @@ If you read all the way very big thank you to you, if you tried to follow my int
 
 Making this project took a lot of time and sweat and though it may seem like a lot of work for little payoff, the real gain is what we've learned along the way and researching, solving hundreds of roadblocks, tinkering and putting it all together taught me a lot!
 
-Again, big 
-# thanks
-for reading, and check out my Carnage walkthrough!
+Again, big *thanks* for reading, and check out my Carnage walkthrough!

@@ -10,8 +10,8 @@ tags: posts
 
 Let's see how a Remote Access Tool like Merlin communicates! We'll capture and read packets in two scenarios:
 
-    * when the attacker connects straight to the victim,
-    * when the attacker connects through our reverse proxy.
+- when the attacker connects straight to the victim,
+- when the attacker connects through our reverse proxy.
 
 First, let's configure the merlin server. Go to the Attacker and open Merlin (remember that you can hit TAB to see all availeable options). Next, type `listeners` and `use http2`. Now we'll configure our HTTPS listener again. Type in `show`. Let's set Interface to our container's IP address, set Port to 5555, and rename it to MerlinListener. Normally you'd change the PSK, the preshared key you use in your first connection to the server, for something stronger but we'll leave it as is.
 
