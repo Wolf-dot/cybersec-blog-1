@@ -1,5 +1,5 @@
 ---
-title: Last words.
+title: Finish.
 description: Draft
 layout: layouts/post.njk
 order: 8
